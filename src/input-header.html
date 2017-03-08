@@ -38,17 +38,21 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 
-<!--
-  We now added the paper-input element, which is built using Polymer.
-  The event changed here: instead of the input event, we are now listening
-  for the value-changed event.
- -->
 
 <dom-module id="input-header">
   <template>
     <div id="label">{{label}}</div>
 
+  <!--
+    When a property has notify set to true, we can remove the event name
+    from our binding. So,
+
     <paper-input value="{{label::value-changed}}"></paper-input>
+
+    is the same as
+    <paper-input value="{{label}}"></paper-input>
+  -->
+    <paper-input value="{{label}}"></paper-input>
   </template>
 
   <script>
