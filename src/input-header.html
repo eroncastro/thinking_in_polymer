@@ -40,12 +40,25 @@
 <dom-module id="input-header">
   <template>
     <div id="label"></div>
-    <input id="input"></input>
+    <input id="input" on-input="_handleInput"></input>
   </template>
 
   <script>
     Polymer({
-      is: 'input-header'
+      is: 'input-header',
+      properties: {
+        label: {
+          type: String,
+          observer: '_labelChanged' // shorthand for creating a setter that calls the observer function
+        }
+      },
+      _labelChanged: function(label) {
+        this.$.label.textContent = label;
+        this.$.input.value = label;
+      },
+      _handleInput: function(e) {
+        this.label = e.target.value;
+      }
     });
   </script>
 </dom-module>
