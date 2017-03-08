@@ -1,0 +1,51 @@
+<!--
+  Polymer is all about leveraging the DOM.
+
+  ==> DOM is the framework
+  - component model: the element
+  - data flow
+  - declarative format
+
+  ==> Custom elements!
+  - fewer concepts
+  - interoperable and reusable
+  - no lock-in
+
+  ==> Polymer helps building custom elements!
+  - attributes
+  - querySelector
+  - addEventListener
+  - setters/getters
+  - templates
+  ==> less boilerplate!
+
+  ==> 3 main concepts:
+  - thinking locally: break down the application into bite-sized pieces
+                      that each do one job really well with a well-defined
+                      interface.
+  - leveraging composition: leverage other elements inside an element.
+  - mediator pattern: define an object that encapsulates how a set of objects interact.
+                      Objects do not communicate with each other directly. Instead,
+                      they communicate through the mediator.
+
+  The custom element will mediate the communication between sibling elements in the local DOM.
+  This means the host will be configuring its children with properties, will listening for events
+  coming from the children and deciding what to do. The mediator will be also presenting a common
+  simplified interface for outside users to use.
+
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="input-header">
+  <template>
+    <div id="label"></div>
+    <input id="input"></input>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'input-header'
+    });
+  </script>
+</dom-module>
