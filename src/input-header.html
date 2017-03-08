@@ -36,29 +36,19 @@
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 <!--
-  We are now refactoring code using Polymer's data-binding system by
-  using double mustache system.
--->
+  We now added the paper-input element, which is built using Polymer.
+  The event changed here: instead of the input event, we are now listening
+  for the value-changed event.
+ -->
 
 <dom-module id="input-header">
   <template>
-    <!--
-      What this is doing is say, anytime the label changes on the host,
-      set that to this property on the child. In other words, you are
-      acting like the mediator. You say: when my label changes, I want
-      to send it to my children.
-    -->
     <div id="label">{{label}}</div>
-    <!--
-      <input id="input" on-input="_handleInput" value="{{label}}"></input>
 
-      We can get rid of on-input by using Polymer's double colon syntax
-      in the binding. It basically tells what event should handle the reverse flow.
-      We can put that directly in the binding.
-    -->
-    <input id="input" value="{{label::input}}"></input>
+    <paper-input value="{{label::value-changed}}"></paper-input>
   </template>
 
   <script>
@@ -67,16 +57,8 @@
       properties: {
         label: {
           type: String,
-          // observer: '_labelChanged' // shorthand for creating a setter that calls the observer function
         }
-      },
-      // _labelChanged: function(label) {
-      //   this.$.label.textContent = label;
-      //   this.$.input.value = label;
-      // },
-      // _handleInput: function(e) {
-      //   this.label = e.target.value;
-      // }
+      }
     });
   </script>
 </dom-module>
